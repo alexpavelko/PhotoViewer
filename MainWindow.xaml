@@ -1,0 +1,47 @@
+﻿<Window  x:Name="window" Icon = "res/MainIcon.png" x:Class="Gallery.MainWindow"  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="PhotoViewer" Height="498.333" Width="707" WindowStartupLocation="CenterScreen" Background="#FFDEDEDE" >
+    <Window.Resources>
+        <Style x:Key="MyStyle">
+            <Setter Property="Control.FontFamily" Value="Verdana" ></Setter>
+            <Setter Property="ItemsControl.FontSize" Value="16" ></Setter>
+            <Setter Property="ItemsControl.Margin" Value="0,0,10,0"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="223*"/>
+        </Grid.RowDefinitions>
+        <Viewbox Margin="0,0,0,75.333">
+            <Menu Background="#FFDEDEDE">
+                <MenuItem MaxHeight="40" HorizontalAlignment="Stretch" x:Name="ButtonOpen" Style="{StaticResource MyStyle}" Header="Open" Background="#FFDEDEDE" BorderBrush="Black" Click="ButtonOpen_Click"></MenuItem>
+                <MenuItem MaxHeight="40" HorizontalAlignment="Stretch" x:Name="ButtonRotate" Style="{StaticResource MyStyle}" Header="Rotate" Background="#FFDEDEDE" BorderBrush="Black">
+                    <MenuItem HorizontalContentAlignment="Stretch" x:Name="ButtonRotate90" Style="{StaticResource MyStyle}" Header="Rotate 90°" Click="ButtonRotate90_Click" ></MenuItem>
+                    <MenuItem x:Name="ButtonRotate180" Style="{StaticResource MyStyle}" Header="Rotate 180°" Click="ButtonRotate180_Click"></MenuItem>
+                    <MenuItem x:Name="ButtonRotate270"  Style="{StaticResource MyStyle}" Header="Rotate 270°" Click="ButtonRotate270_Click"></MenuItem>
+                </MenuItem>
+                <MenuItem x:Name="ButtonSlideShow" Style="{StaticResource MyStyle}" Header="Slide Show" Background="#FFDEDEDE" BorderBrush="Black">
+                    <MenuItem x:Name="ButtonEnableSlideShow" Style="{StaticResource MyStyle}" Header="Start slide-show" Click="ButtonEnableSlideShow_Click"></MenuItem>
+                    <MenuItem x:Name="ButtonOffSlideShow" Style="{StaticResource MyStyle}" Header="Turn off slide-show" Click="ButtonOffSlideShow_Click"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </Viewbox>
+
+        <Label HorizontalAlignment="Stretch"  x:Name="labelPath" Height="32" Margin="140,334.333,0,0" VerticalAlignment="Bottom" Width="407" Background="#FFDEDEDE" BorderBrush="#FFDEDEDE" BorderThickness="1" Grid.Row="1" />
+        <Image HorizontalAlignment="Stretch"  Margin="102,0.333,76,31.667" Name="ImageControl"  Width="521" Grid.Row="1" >
+            <Image.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="ContextZoom" Header="На весь экран" Click="ContextZoom_Click"></MenuItem>
+                    <MenuItem x:Name="ContextCopy" Header="Копировать" Click="ContextCopy_Click"></MenuItem>
+                    <MenuItem x:Name="ContextSave" Header="Сохранить" Click="ContextSave_Click"></MenuItem>
+                    <MenuItem x:Name="ContextRemove" Header="Удалить" Click="ContextRemove_Click"></MenuItem>
+                </ContextMenu>
+            </Image.ContextMenu>
+        </Image>
+        <Button Visibility="Hidden" HorizontalAlignment="Left"  x:Name="ButtonBack"  VerticalAlignment="Top" Width="32" RenderTransformOrigin="5.732,8.46" Margin="34,129.333,634,0" Height="32" Click="ButtonBack_Click" BorderBrush="#FFDEDEDE" Grid.Row="1">
+            <Image HorizontalAlignment="Stretch" VerticalAlignment="Top" Source="res/prev.png" RenderTransformOrigin="0.14,0.863" />
+        </Button>
+        <Button  Visibility="Hidden"  x:Name="ButtonNext"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="32" RenderTransformOrigin="5.732,8.46" Margin="647,128.333,21,0" Height="32" Click="ButtonNext_Click" BorderBrush="#FFDEDEDE" Grid.Row="1">
+            <Image HorizontalAlignment="Stretch" VerticalAlignment="Top" Source="res/next.png" RenderTransformOrigin="0.14,0.863"/>
+        </Button>
+    </Grid>
+</Window>
